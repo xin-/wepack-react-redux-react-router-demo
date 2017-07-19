@@ -10,7 +10,7 @@ import reducers from './reducers'
 import Counter from './components/counter'
 import Another from './components/another'
 import Onepackage from './components/onepackage'
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, Switch, browserHistory } from 'react-router';
 import createHistory from 'history/createBrowserHistory'
 import './style.scss'
 
@@ -34,16 +34,16 @@ let rootElement = document.getElementById('app')
 render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
-			<div>
-				<Route path="/counter" component={Counter} />
-		    	<Route path="/another" component={Another} />
-		    	<Route path="/onepackage" component={Onepackage} />
-			</div>
+			<Switch>
+				<Route exact path="/" component={Counter} />
+		    	<Route exact path="/another" component={Another} />
+		    	<Route exact path="/onepackage" component={Onepackage} />
+			</Switch>
 		</ConnectedRouter>
 	</Provider>,
 	rootElement
 )
-
+//Route 上面的exact 表示准确的匹配路由 否则将所有可以匹配的都匹配
 
 
 
